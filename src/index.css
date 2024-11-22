@@ -15,11 +15,13 @@ body {
 
 main {
   background-color: #F5F7FB;
-  height: 500px;
-  width: 500px;
+  height: 95vh;
+  max-height: 700px;
+  aspect-ratio: 1;
   display: flex;
   flex-direction: column;
-  place-content: center;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
 }
 
@@ -28,24 +30,48 @@ main {
   height: 100%;
   background-image: url("../Title-Background.svg");
   background-size: cover;
-  border-radius: 5px;
+  border-radius: .25rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+/* 
+.quiz--container {
+  width: 100%;
+  height: 100%;
+  background-image: url("../Background.svg");
+  background-size: cover;
+  border-radius: .25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+} */
 
 .quiz--container {
   width: 100%;
   height: 100%;
   background-image: url("../Background.svg");
   background-size: cover;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  border-radius: 0.25rem;
+  display: grid; /* Use grid layout */
+  grid-template-rows: repeat(6, 1fr); /* Create 6 equal-height rows */
+  padding: 2rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
 }
+
+.quiz--container::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
 
 .quiz--title {
   font-size: 2rem;
@@ -68,4 +94,20 @@ main {
   font-weight: 500;
   border: none;
   border-radius: 1rem;
+}
+
+.check--btn {
+  max-width: 10rem;
+  padding: .75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  margin: 2rem auto;
+  background-color: #4D5B9E;
+  color: #F5F7FB;
+  font-family: "Karla", sans-serif;
+  font-size: 1rem; 
+  font-weight: 500;
+  border: none;
+  border-radius: .5rem;
+  align-self: center;
 }

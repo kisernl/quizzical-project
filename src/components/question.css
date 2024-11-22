@@ -1,0 +1,31 @@
+/* .question--container {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+} */
+.question {
+    font-size: rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+}
+
+.answer {
+    align-items: flex-start;
+    margin-right: 1rem;
+    margin-bottom: .5rem;
+    border: solid #4D5B9E .1rem;
+    background-color: transparent;
+    border-radius: .5rem;
+    padding: .25rem;
+    min-width: 5rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+hr {
+    height: 0.1rem; /* Adjust thickness here */
+    background-color: #4D5B9E; /* Use background-color instead of color */
+    border: none; /* Remove default border */
+    margin: .1rem;
+    margin-top: 1rem;
+}

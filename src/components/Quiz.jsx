@@ -11,7 +11,7 @@ const [questions, setQuestions] = React.useState(null)
 
 React.useEffect(() => {
     console.log("effect ran")
-    fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+    fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple")
     .then(response => response.json())
     .then(data => setQuestions(data.results))
 }, [])
@@ -23,8 +23,12 @@ console.log("log from Quiz: ", questions[3]);
 
     return (
          <section className='quiz--container'> 
-            <h1 className='quiz--title'>Quiz Here</h1>
             <Question questions={questions[0]} />
+            <Question questions={questions[1]} />
+            <Question questions={questions[2]} />
+            <Question questions={questions[3]} />
+            <Question questions={questions[4]} />
+            <button className="check--btn">Check Answers</button>
         </section>
     )
 }
