@@ -10,6 +10,7 @@ function App() {
     setGameOn(true)
   }
 
+
   return (
     <>
       <main>
