@@ -29,3 +29,9 @@ hr {
     margin: .1rem;
     margin-top: 1rem;
 }
+
+button.answer:disabled {
+    background-color: transparent;
+    color: rgb(102, 102, 102, 0.5);
+    border: solid rgb(102, 102, 102, 0.5) 0.1rem;
+}
