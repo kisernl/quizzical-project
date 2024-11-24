@@ -16,29 +16,61 @@ export default function Quiz(props) {
 
 const [questions, setQuestions] = React.useState(null)
 const [checkAnswer, setCheckAnswer] = React.useState(false)
+const [totalCorrect, setTotalCorrect] = React.useState(null)
+const [reloadKey, setReloadKey] = React.useState(0)
 
 React.useEffect(() => {
     // console.log("effect ran")
     fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple")
     .then(response => response.json())
     .then(data => setQuestions(data.results))
-}, [])
+}, [reloadKey])
 
 const clickCheck = () => {
     setCheckAnswer(true)
 }
 
+const incrementCorrectTotal = () => {
+    setTotalCorrect((prevCount) => prevCount + 1)
+}
+
+const reloadData = () => {
+    setReloadKey((prevKey) => prevKey + 1);
+    setCheckAnswer(false);
+    setTotalCorrect(0);
+};
+
+
+if (totalCorrect !== null) {
+    console.log("Total Questions: ", questions.length)
+    console.log("Total Correct Aswers: ", totalCorrect)
+}
+
+
 if (questions !== null) {
 
     return (
          <section className='quiz--container'> 
-            <Question questions={questions[0]} checkAnswer={checkAnswer} />
-            <Question questions={questions[1]} checkAnswer={checkAnswer} />
-            <Question questions={questions[2]} checkAnswer={checkAnswer} />
-            <Question questions={questions[3]} checkAnswer={checkAnswer} />
-            <Question questions={questions[4]} checkAnswer={checkAnswer} />
-            <button className="check--btn" onClick={clickCheck}>Check Answers</button>
+         {questions.map((question, index) => (
+                <Question 
+                    key={`${reloadKey}-${index}`}
+                    questions={question} 
+                    checkAnswer={checkAnswer} 
+                    onCorrectAnswer={incrementCorrectTotal} 
+                />
+            ))}
+            {checkAnswer === false && <button className="quiz--btn" onClick={clickCheck}>Check Answers</button>}
+            {checkAnswer && <div className="score--container">
+            <h3>Score:   {totalCorrect === null ? " 0" : totalCorrect}/{questions.length}</h3>
+            <button className="quiz--btn" id="restart--btn" onClick={reloadData}>Play Again</button>
+            </div>}
         </section>
     )
 }
 }
+
+            {/* <Question questions={questions[0]} checkAnswer={checkAnswer} onCorrectAnswer={incrementCorrectTotal} />
+            <Question questions={questions[1]} checkAnswer={checkAnswer} onCorrectAnswer={incrementCorrectTotal} />
+            <Question questions={questions[2]} checkAnswer={checkAnswer} onCorrectAnswer={incrementCorrectTotal} />
+            <Question questions={questions[3]} checkAnswer={checkAnswer} onCorrectAnswer={incrementCorrectTotal} />
+            <Question questions={questions[4]} checkAnswer={checkAnswer} onCorrectAnswer={incrementCorrectTotal} /> */}

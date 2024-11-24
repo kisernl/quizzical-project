@@ -96,12 +96,12 @@ main {
   border-radius: 1rem;
 }
 
-.check--btn {
+.quiz--btn {
   max-width: 10rem;
   padding: .75rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
   background-color: #4D5B9E;
   color: #F5F7FB;
   font-family: "Karla", sans-serif;
@@ -110,4 +110,16 @@ main {
   border: none;
   border-radius: .5rem;
   align-self: center;
+}
+
+.score--container {
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  margin: 0 2rem;
+  gap: 2rem;
+}
+
+#restart--btn {
+  margin: 1.5rem 0;
 }

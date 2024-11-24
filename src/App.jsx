@@ -15,7 +15,7 @@ function App() {
     <>
       <main>
         {gameOn === false && <Start toggleOn={toggleOn} />}
-        {gameOn && <Quiz />}
+        {gameOn && <Quiz toggleOn={toggleOn}  />}
       </main>
     </>
   );
